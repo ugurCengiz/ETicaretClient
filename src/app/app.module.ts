@@ -16,7 +16,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AdminModule, UiModule,
+    AdminModule, 
+    UiModule,
+    
     
   ],
   providers: [],
