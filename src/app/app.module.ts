@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     AdminModule, 
     UiModule,
+    ToastrModule.forRoot()
     
     
   ],
