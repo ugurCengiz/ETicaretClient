@@ -12,12 +12,16 @@ declare var $: any
 })
 export class AppComponent {
   constructor(private toastrService:CustomToastrService){
-    toastrService.message("Merhaba","Uğur1",{messageType:ToastrMessageType.Info,position:ToAstrPosition.TopCenter})
-    toastrService.message("Merhaba","Uğur2",{messageType:ToastrMessageType.Error,position:ToAstrPosition.TopFullWidth})
-    toastrService.message("Merhaba","Uğur3",{messageType:ToastrMessageType.Success,position:ToAstrPosition.BottomFullWidth})
+    //toastrService.message("Merhaba","Uğur1",{messageType:ToastrMessageType.Info,position:ToAstrPosition.TopCenter})
+    //toastrService.message("Merhaba","Uğur2",{messageType:ToastrMessageType.Error,position:ToAstrPosition.TopFullWidth})
+    //toastrService.message("Merhaba","Uğur3",{messageType:ToastrMessageType.Success,position:ToAstrPosition.BottomFullWidth})
     toastrService.message("Merhaba","Uğur4",{messageType:ToastrMessageType.Warning,position:ToAstrPosition.TopLeft})
   }
 }
+
+$.get("https://localhost:7257/api/Products",data=>{
+  console.log(data)
+})
 
 //$(document).ready(()=>{
  // alert("Hoşgeldiniz")
