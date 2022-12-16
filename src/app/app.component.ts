@@ -19,9 +19,6 @@ export class AppComponent {
   }
 }
 
-$.get("https://localhost:7257/api/Products",data=>{
-  console.log(data)
-})
 
 //$(document).ready(()=>{
  // alert("Hoşgeldiniz")
