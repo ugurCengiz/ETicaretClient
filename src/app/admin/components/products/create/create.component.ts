@@ -1,7 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
-
-
+import {  NgxSpinnerService } from 'ngx-spinner';
+import { Output, EventEmitter } from '@angular/core';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Product } from 'src/app/contracts/create_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
@@ -18,10 +18,11 @@ export class CreateComponent extends BaseComponent implements OnInit {
     super(spinner)
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
 
-    
   }
+
+  @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
 
   create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
     this.showSpinner(SpinnerType.ballatom)
@@ -29,26 +30,6 @@ export class CreateComponent extends BaseComponent implements OnInit {
       create_product.name= name.value;
       create_product.stock=parseInt(stock.value);
       create_product.price= parseFloat(price.value);     
-
-      if(!name.value.length == null){
-        this.alertify.message("Lütfen ürün adını giriniz!",{
-          dismissOthers:true,
-          messageType:MessageType.Error,
-          position:Position.BottomRight
-        });
-        return;
-      }
-
-      if(parseInt(stock.value)<0){
-        this.alertify.message("Lütfen stok bilgisini doğru giriniz!",{
-          dismissOthers:true,
-          messageType:MessageType.Error,
-          position:Position.BottomRight
-        });
-        return;
-      }
-
-
 
       this.productService.create(create_product,()=>{
         this.hideSpinner(SpinnerType.ballatom);
@@ -58,6 +39,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
           messageType:MessageType.Success,
           position:Position.TopRight
         });
+        this.createdProduct.emit(create_product);
       },errorMessage=>{
         this.alertify.message(errorMessage,{
           dismissOthers:true,

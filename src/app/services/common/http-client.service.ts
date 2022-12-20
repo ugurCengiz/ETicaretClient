@@ -13,15 +13,15 @@ export class HttpClientService {
   return `${requestParamaters.baseUrl ? requestParamaters.baseUrl:this.baseUrl}/${requestParamaters.controller}`
   }
 
-  get<T>(requestParamaters:Partial<RequestParameters>,id?:string):Observable<T>{
+  get<T>(requestParameters:Partial<RequestParameters>,id?:string):Observable<T>{
     let url:string="";
-    if(requestParamaters.fullEndPoint){
-      url = requestParamaters.fullEndPoint;
+    if(requestParameters.fullEndPoint){
+      url = requestParameters.fullEndPoint;
     }
     else{
-    url = `${this.url(requestParamaters)}${id? `/${id}`:""}`
+    url = `${this.url(requestParameters)}${id? `/${id}`:""}${requestParameters.queryString? `?${requestParameters.queryString}`:""}`
     }
-   return this.httpClient.get<T>(url,{headers:requestParamaters.headers})
+   return this.httpClient.get<T>(url,{headers:requestParameters.headers})
 
 
   }
@@ -31,7 +31,7 @@ export class HttpClientService {
     if (requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint;
     else
-      url = `${this.url(requestParameter)}`
+      url = `${this.url(requestParameter)}${requestParameter.queryString? `?${requestParameter.queryString}`:""}`
 
     return this.httpClient.post<T>(url, body, { headers: requestParameter.headers });
   }
@@ -41,7 +41,7 @@ export class HttpClientService {
     if (requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint;
     else
-      url = `${this.url(requestParameter)}`;
+      url = `${this.url(requestParameter)}${requestParameter.queryString? `?${requestParameter.queryString}`:""}`;
 
     return this.httpClient.put<T>(url, body, { headers: requestParameter.headers });
   }
@@ -52,7 +52,7 @@ export class HttpClientService {
   if (requestParameter.fullEndPoint)
   url = requestParameter.fullEndPoint;
   else
-  url = `${this.url(requestParameter)}/${id}`;
+  url = `${this.url(requestParameter)}/${id}${requestParameter.queryString? `?${requestParameter.queryString}`:""}`;
 
   return this.httpClient.delete<T>(url,{headers:requestParameter.headers})
 
@@ -64,7 +64,7 @@ export class HttpClientService {
 export class RequestParameters{
   controller?:string;
   action?:String;
-
+  queryString?:string;
   headers?:HttpHeaders;
   baseUrl?:string;
 
