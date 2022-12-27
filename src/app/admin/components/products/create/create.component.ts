@@ -6,6 +6,8 @@ import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Product } from 'src/app/contracts/create_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
+import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
+
 
 @Component({
   selector: 'app-create',
@@ -23,6 +25,13 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
 
   @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
+  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
+    action: "Upload",
+    controller: "Products",
+    explanation: "Resimleri sürükleyin veya seçin...",
+    isAdminPage: true,
+    accept:".png, .jpg, .jpeg, .json"
+  };
 
   create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
     this.showSpinner(SpinnerType.ballatom)
