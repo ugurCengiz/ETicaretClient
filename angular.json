@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "cdc20638-18cd-4fcf-bc22-b5c82790b100"
+    "analytics": "94987cbc-77d9-4ff7-a6ac-c01b523bf25b"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -34,15 +34,15 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/alertifyjs/build/css/alertify.min.css",
               "node_modules/alertifyjs/build/css/themes/semantic.min.css",
-              "node_modules/ngx-toastr/toastr.css",              
-              "node_modules/ngx-spinner/animations/ball-pulse-sync.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "node_modules/ngx-spinner/animations/ball-atom.css",
-              "node_modules/ngx-spinner/animations/ball-spin-fade.css"
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise-fade-rotating.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -114,7 +114,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
